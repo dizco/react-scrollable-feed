@@ -17,54 +17,45 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     this.wrapperRef = React.createRef();
   }
 
-  getSnapshotBeforeUpdate() {
-    return this.isViewable(this.wrapperRef.current, this.bottomRef.current); //This argument is passed down to componentDidUpdate as 3rd parameter
+  getSnapshotBeforeUpdate(): boolean {
+    if (this.wrapperRef.current && this.bottomRef.current) {
+      return ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current); //This argument is passed down to componentDidUpdate as 3rd parameter
+    }
+    return false;
   }
 
-  componentDidUpdate({}: any, {}: any, snapshot: any) {
+  componentDidUpdate({}: any, {}: any, snapshot: boolean) {
     console.log('Comonent did update', this.state, this.props, snapshot);
-    if (snapshot && !this.isViewable(this.wrapperRef.current, this.bottomRef.current)
+    if (snapshot
       && this.bottomRef && this.bottomRef.current
-      && this.wrapperRef && this.wrapperRef.current) {
-      this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
+      && this.wrapperRef && this.wrapperRef.current
+      && !ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current)) {
+      ScrollableFeed.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
 
-  private scrollParentToChild(parent: any, child: any) {
+  protected static scrollParentToChild(parent: HTMLElement, child: HTMLElement): void {
     //Source: https://stackoverflow.com/a/45411081/6316091
-    // Where is the parent on page
-    var parentRect = parent.getBoundingClientRect();
-    // What can you see?
-    var parentViewableArea = {
-      height: parent.clientHeight,
-      width: parent.clientWidth
-    };
+    const parentRect = parent.getBoundingClientRect();
+    const childRect = child.getBoundingClientRect();
 
-    // Where is the child
-    var childRect = child.getBoundingClientRect();
-    // Is the child viewable?
-    var isViewable = (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parentViewableArea.height);
-
-    // if you can't see the child try to scroll parent
-    if (!isViewable) {
-      // scroll by offset relative to parent
-      parent.scrollTop = (childRect.top + parent.scrollTop) - parentRect.top
+    if (!ScrollableFeed.isViewable(parent, child)) {
+      //Scroll by offset relative to parent
+      parent.scrollTop = (childRect.top + parent.scrollTop) - parentRect.top;
     }
   }
 
-  private isViewable(parent: any, child: any): boolean {
-    // Where is the parent on page
-    var parentRect = parent.getBoundingClientRect();
-    // What can you see?
-    var parentViewableArea = {
-      height: parent.clientHeight,
-      width: parent.clientWidth
-    };
+  /**
+   * Returns whether a child element is visible within a parent element
+   * @param parent
+   * @param child
+   */
+  private static isViewable(parent: HTMLElement, child: HTMLElement): boolean {
+    //Source: https://stackoverflow.com/a/45411081/6316091
 
-    // Where is the child
-    var childRect = child.getBoundingClientRect();
-    // Is the child viewable?
-    return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parentViewableArea.height);
+    const parentRect = parent.getBoundingClientRect();
+    const childRect = child.getBoundingClientRect();
+    return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parent.clientHeight);
   }
 
   render() {
