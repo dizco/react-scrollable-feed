@@ -2,20 +2,26 @@ import * as React from 'react'
 
 import styles from './styles.css'
 
-export interface ScrollableFeedProps {
+export type ScrollableFeedProps = {
   maxHeight: number;
-  scrollBehavior?: string; //TODO: Default to auto or smooth?
+  scroll?: (element: HTMLElement, offset: number) => void;
 }
 
 class ScrollableFeed extends React.Component<ScrollableFeedProps> {
-  private wrapperRef: React.RefObject<HTMLDivElement>;
-  private bottomRef: React.RefObject<HTMLDivElement>;
+  private readonly wrapperRef: React.RefObject<HTMLDivElement>;
+  private readonly bottomRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: ScrollableFeedProps) {
     super(props);
     this.bottomRef = React.createRef();
     this.wrapperRef = React.createRef();
   }
+
+  static defaultProps = {
+    scroll: (element: HTMLElement, offset: number) => {
+      element.scrollBy({top: offset, behavior: 'smooth'});
+    },
+  };
 
   getSnapshotBeforeUpdate(): boolean {
     if (this.wrapperRef.current && this.bottomRef.current) {
@@ -24,24 +30,32 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return false;
   }
 
-  componentDidUpdate({}: any, {}: any, snapshot: boolean) {
-    console.log('Comonent did update', this.state, this.props, snapshot);
+  componentDidUpdate({}: any, {}: any, snapshot: boolean): void {
     if (snapshot
       && this.bottomRef && this.bottomRef.current
       && this.wrapperRef && this.wrapperRef.current
       && !ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current)) {
-      ScrollableFeed.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
+      this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
 
-  protected static scrollParentToChild(parent: HTMLElement, child: HTMLElement): void {
+  /**
+   * Scrolls a parent element such that the child element will be in view
+   * @param parent
+   * @param child
+   */
+  protected scrollParentToChild(parent: HTMLElement, child: HTMLElement): void {
     //Source: https://stackoverflow.com/a/45411081/6316091
     const parentRect = parent.getBoundingClientRect();
     const childRect = child.getBoundingClientRect();
 
     if (!ScrollableFeed.isViewable(parent, child)) {
       //Scroll by offset relative to parent
-      parent.scrollTop = (childRect.top + parent.scrollTop) - parentRect.top;
+      const scrollOffset = (childRect.top + parent.scrollTop) - parentRect.top;
+      const { scroll } = this.props;
+      if (scroll) {
+        scroll(parent, scrollOffset);
+      }
     }
   }
 
@@ -58,8 +72,8 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parent.clientHeight);
   }
 
-  render() {
-    const children = this.props.children;
+  render(): JSX.Element {
+    const { children } = this.props;
     return (
       <div className={styles.scrollableDiv} style={{maxHeight: this.props.maxHeight}} ref={this.wrapperRef}>
         {children}
