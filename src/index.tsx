@@ -38,6 +38,10 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
       this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
+
+  componentDidMount(): void {
+    //Scroll to bottom from the start
+    if (this.bottomRef.current && this.wrapperRef.current) {
       this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
