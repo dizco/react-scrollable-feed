@@ -15,17 +15,20 @@ npm install --save react-scrollable-feed
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'react-scrollable-feed'
+import ScrollableFeed from 'react-scrollable-feed'
 
 class Example extends React.Component {
-  render () {
+  render() {
+    const items = ['Item 1', 'Item2'];
     return (
-      <MyComponent />
-    )
+      <ScrollableFeed>
+        {items.map((item, i) => <div key={i}>{item}</div>)}
+      </ScrollableFeed>
+    );
   }
 }
 ```
 
 ## License
 
-MIT © [dizco](https://github.com/dizco)
+MIT © [Gabriel Bourgault](https://github.com/dizco)

@@ -1,4 +1,4 @@
 declare namespace styles {
-	const test: string
+	const scrollableDiv: string
 }
 export default styles

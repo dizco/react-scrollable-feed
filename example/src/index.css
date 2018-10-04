@@ -3,3 +3,14 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.scrollable-wrapper {
+  border: 1px solid black;
+  width: 50%;
+  margin: 5rem auto;
+  max-height: 300px;
+}
+
+.text-center {
+  text-align: center;
+}
