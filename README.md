@@ -16,6 +16,8 @@ Perfect for any chat UI or any kind of feed.
 
 View a live demo [here](https://dizco.github.io/react-scrollable-feed/).
 
+![Live demo gif](docs/demo.gif)
+
 ## Install
 
 ```bash
