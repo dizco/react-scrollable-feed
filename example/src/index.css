@@ -8,4 +8,9 @@ body {
   border: 1px solid black;
   width: 50%;
   margin: 5rem auto;
+  max-height: 300px;
+}
+
+.text-center {
+  text-align: center;
 }

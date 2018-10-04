@@ -41,7 +41,7 @@ export default class App extends Component {
     const { items } = this.state;
     return (
       <section>
-        <div className={'scrollable-wrapper'} style={{maxHeight: 300}}>
+        <div className={'scrollable-wrapper'}>
           <ScrollableFeed
             changeDetectionFilter={(previousProps, newProps) => {
               const prevChildren = previousProps.children;
@@ -54,7 +54,7 @@ export default class App extends Component {
             {items.map((item, i) => <div key={i}>{item}</div>)}
           </ScrollableFeed>
         </div>
-        <div style={{textAlign: 'center'}}>
+        <div className={'text-center'}>
           <button onClick={() => this.addItem()}>Add Item</button>
         </div>
       </section>
