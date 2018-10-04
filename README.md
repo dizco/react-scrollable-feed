@@ -10,6 +10,8 @@
 [![devDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=dev)
 [![peerDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=peer)
 
+Perfect for any chat UI or any kind of feed.
+
 ## Demo
 
 View a live demo [here](https://dizco.github.io/react-scrollable-feed/).
@@ -27,9 +29,10 @@ import * as React from 'react'
 
 import ScrollableFeed from 'react-scrollable-feed'
 
-class Example extends React.Component {
+class App extends React.Component {
   render() {
-    const items = ['Item 1', 'Item2'];
+    const items = ['Item 1', 'Item 2'];
+
     return (
       <ScrollableFeed>
         {items.map((item, i) => <div key={i}>{item}</div>)}
@@ -67,7 +70,7 @@ Is called after the scroll animation has been executed.
 - Type: `(previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean`
 - Default: `() => true`
 
-Allows to customize _when_ the scroll should occur. This will be called everything a `componentDidUpdate` happens, which means everytime one of the props changes. You will receive in parameter the previous and new props.
+Allows to customize _when_ the scroll should occur. This will be called everytime a `componentDidUpdate` happens, which means everytime one of the props changes. You will receive as parameters the previous and the new props.
 
 Note: `ScrollableFeedComponentProps` is defined as `Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>`
 
@@ -78,25 +81,34 @@ import * as React from 'react'
 
 import ScrollableFeed from 'react-scrollable-feed'
 
-class Example extends React.Component {
+class App extends React.Component {
+  changeDetectionFilter(previousProps, newProps) {
+    const prevChildren = previousProps.children;
+    const newChildren = newProps.children;
+
+    return prevChildren !== newChildren
+      && prevChildren[prevChildren.length - 1] !== newChildren[newChildren.length - 1];
+  }
+
   render() {
-    const items = ['Item 1', 'Item2'];
+    const items = ['Item 1', 'Item 2'];
+
     return (
       <ScrollableFeed
-        changeDetectionFilter={(previousProps, newProps) => {
-          const prevChildren = previousProps.children;
-          const newChildren = newProps.children;
-      
-          return prevChildren !== newChildren
-            && prevChildren[prevChildren.length - 1] !== newChildren[newChildren.length - 1];
-        }}
+        changeDetectionFilter={this.changeDetectionFilter}
       >
         {items.map((item, i) => <div key={i}>{item}</div>)}
       </ScrollableFeed>
     );
   }
 }
+
+export default App;
 ```
+
+## For more details
+
+For more details on how to integrate _react-scrollable-feed_ in your application, have a look at the [example](example) folder.
 
 ## License
 
