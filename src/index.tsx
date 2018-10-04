@@ -1,12 +1,16 @@
 import * as React from 'react'
 
 import styles from './styles.css'
+import { ReactNode } from 'react';
 
 export type ScrollableFeedProps = {
   forceScroll?: boolean;
   animateScroll?: (element: HTMLElement, offset: number) => void;
-  onScroll?: () => void;
+  onScrollComplete?: () => void;
+  changeDetectionFilter?: (previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean;
 }
+
+type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
 
 class ScrollableFeed extends React.Component<ScrollableFeedProps> {
   private readonly wrapperRef: React.RefObject<HTMLDivElement>;
@@ -18,10 +22,14 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     this.wrapperRef = React.createRef();
   }
 
-  static defaultProps = {
+  static defaultProps: ScrollableFeedProps = {
     forceScroll: false,
     animateScroll: (element: HTMLElement, offset: number): void => {
       element.scrollBy({top: offset, behavior: 'smooth'});
+    },
+    onScrollComplete: () => {},
+    changeDetectionFilter: ({}: ScrollableFeedComponentProps, {}: ScrollableFeedComponentProps): boolean => {
+      return true;
     },
   };
 
@@ -32,9 +40,10 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return false;
   }
 
-  componentDidUpdate({}: any, {}: any, snapshot: boolean): void {
-    const { forceScroll } = this.props;
-    if ((forceScroll || snapshot) && this.bottomRef.current && this.wrapperRef.current) {
+  componentDidUpdate(previousProps: ScrollableFeedComponentProps, {}: any, snapshot: boolean): void {
+    const { forceScroll, changeDetectionFilter } = this.props;
+    const isValidChange = changeDetectionFilter!(previousProps, this.props);
+    if (isValidChange && (forceScroll || snapshot) && this.bottomRef.current && this.wrapperRef.current) {
       this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
@@ -59,9 +68,10 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     if (!ScrollableFeed.isViewable(parent, child)) {
       //Scroll by offset relative to parent
       const scrollOffset = (childRect.top + parent.scrollTop) - parentRect.top;
-      const { animateScroll } = this.props;
+      const { animateScroll, onScrollComplete } = this.props;
       if (animateScroll) {
         animateScroll(parent, scrollOffset);
+        onScrollComplete!();
       }
     }
   }
@@ -79,7 +89,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parent.clientHeight);
   }
 
-  render(): JSX.Element {
+  render(): React.ReactNode {
     const { children } = this.props;
     return (
       <div className={styles.scrollableDiv} ref={this.wrapperRef}>
