@@ -28,9 +28,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
       element.scrollBy({ top: offset });
     },
     onScrollComplete: () => {},
-    changeDetectionFilter: ({}: ScrollableFeedComponentProps, {}: ScrollableFeedComponentProps): boolean => {
-      return true;
-    },
+    changeDetectionFilter: () => true,
   };
 
   getSnapshotBeforeUpdate(): boolean {
