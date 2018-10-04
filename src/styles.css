@@ -1,3 +1,5 @@
 .scrollable-div {
+  max-height: inherit;
+  height: inherit;
   overflow-y: auto;
 }

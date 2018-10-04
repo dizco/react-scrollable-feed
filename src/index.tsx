@@ -3,8 +3,9 @@ import * as React from 'react'
 import styles from './styles.css'
 
 export type ScrollableFeedProps = {
-  maxHeight: number;
-  scroll?: (element: HTMLElement, offset: number) => void;
+  forceScroll?: boolean;
+  animateScroll?: (element: HTMLElement, offset: number) => void;
+  onScroll?: () => void;
 }
 
 class ScrollableFeed extends React.Component<ScrollableFeedProps> {
@@ -18,7 +19,8 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
   }
 
   static defaultProps = {
-    scroll: (element: HTMLElement, offset: number) => {
+    forceScroll: false,
+    animateScroll: (element: HTMLElement, offset: number): void => {
       element.scrollBy({top: offset, behavior: 'smooth'});
     },
   };
@@ -31,10 +33,11 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
   }
 
   componentDidUpdate({}: any, {}: any, snapshot: boolean): void {
-    if (snapshot
-      && this.bottomRef && this.bottomRef.current
-      && this.wrapperRef && this.wrapperRef.current
-      && !ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current)) {
+    const { forceScroll } = this.props;
+    if ((forceScroll || snapshot) && this.bottomRef.current && this.wrapperRef.current) {
+      this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
+    }
+  }
       this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
@@ -52,9 +55,9 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     if (!ScrollableFeed.isViewable(parent, child)) {
       //Scroll by offset relative to parent
       const scrollOffset = (childRect.top + parent.scrollTop) - parentRect.top;
-      const { scroll } = this.props;
-      if (scroll) {
-        scroll(parent, scrollOffset);
+      const { animateScroll } = this.props;
+      if (animateScroll) {
+        animateScroll(parent, scrollOffset);
       }
     }
   }
@@ -66,16 +69,16 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
    */
   private static isViewable(parent: HTMLElement, child: HTMLElement): boolean {
     //Source: https://stackoverflow.com/a/45411081/6316091
-
     const parentRect = parent.getBoundingClientRect();
     const childRect = child.getBoundingClientRect();
+
     return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parent.clientHeight);
   }
 
   render(): JSX.Element {
     const { children } = this.props;
     return (
-      <div className={styles.scrollableDiv} style={{maxHeight: this.props.maxHeight}} ref={this.wrapperRef}>
+      <div className={styles.scrollableDiv} ref={this.wrapperRef}>
         {children}
         <div ref={this.bottomRef}></div>
       </div>
