@@ -8,6 +8,7 @@ export type ScrollableFeedProps = {
   animateScroll?: (element: HTMLElement, offset: number) => void;
   onScrollComplete?: () => void;
   changeDetectionFilter?: (previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean;
+  viewableDetectionEpsilon?: number;
 }
 
 type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
@@ -29,11 +30,13 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     },
     onScrollComplete: () => {},
     changeDetectionFilter: () => true,
+    viewableDetectionEpsilon: 2,
   };
 
   getSnapshotBeforeUpdate(): boolean {
     if (this.wrapperRef.current && this.bottomRef.current) {
-      return ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current); //This argument is passed down to componentDidUpdate as 3rd parameter
+      const { viewableDetectionEpsilon } = this.props;
+      return ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current, viewableDetectionEpsilon!); //This argument is passed down to componentDidUpdate as 3rd parameter
     }
     return false;
   }
@@ -59,11 +62,12 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
    * @param child
    */
   protected scrollParentToChild(parent: HTMLElement, child: HTMLElement): void {
-    //Source: https://stackoverflow.com/a/45411081/6316091
-    const parentRect = parent.getBoundingClientRect();
-    const childRect = child.getBoundingClientRect();
+    const { viewableDetectionEpsilon } = this.props;
+    if (!ScrollableFeed.isViewable(parent, child, viewableDetectionEpsilon!)) {
+      //Source: https://stackoverflow.com/a/45411081/6316091
+      const parentRect = parent.getBoundingClientRect();
+      const childRect = child.getBoundingClientRect();
 
-    if (!ScrollableFeed.isViewable(parent, child)) {
       //Scroll by offset relative to parent
       const scrollOffset = (childRect.top + parent.scrollTop) - parentRect.top;
       const { animateScroll, onScrollComplete } = this.props;
@@ -78,13 +82,18 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
    * Returns whether a child element is visible within a parent element
    * @param parent
    * @param child
+   * @param epsilon
    */
-  private static isViewable(parent: HTMLElement, child: HTMLElement): boolean {
+  private static isViewable(parent: HTMLElement, child: HTMLElement, epsilon: number): boolean {
+    epsilon = epsilon || 0;
+
     //Source: https://stackoverflow.com/a/45411081/6316091
     const parentRect = parent.getBoundingClientRect();
     const childRect = child.getBoundingClientRect();
 
-    return (childRect.top >= parentRect.top) && (childRect.top <= parentRect.top + parent.clientHeight);
+    const childTopIsViewable = (childRect.top >= parentRect.top);
+    const childBottomIsViewable = (Math.abs(parentRect.top + parent.clientHeight - childRect.top) <= epsilon); //Use epsilon because getBoundingClientRect might return floats https://stackoverflow.com/a/40879359/6316091
+    return childTopIsViewable && childBottomIsViewable;
   }
 
   render(): React.ReactNode {

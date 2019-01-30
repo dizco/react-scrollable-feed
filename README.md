@@ -108,6 +108,13 @@ class App extends React.Component {
 export default App;
 ```
 
+### `viewableDetectionEpsilon`
+
+- Type: `number`
+- Default: `2`
+
+Indicates the number of pixels of difference between the actual bottom and the current position that can be tolerated. The default setting should be fine for most use cases.
+
 ## For more details
 
 For more details on how to integrate _react-scrollable-feed_ in your application, have a look at the [example](example) folder.
