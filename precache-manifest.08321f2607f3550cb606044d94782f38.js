@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/react-scrollable-feed/static/js/runtime~main.64cf9784.js"
   },
   {
-    "revision": "a655ef55e90bd82e810f",
-    "url": "/react-scrollable-feed/static/js/main.a655ef55.chunk.js"
+    "revision": "50e3d1309378997c4bd4",
+    "url": "/react-scrollable-feed/static/js/main.50e3d130.chunk.js"
   },
   {
     "revision": "1f9c4fd8a94cd5f4184e",
     "url": "/react-scrollable-feed/static/js/1.1f9c4fd8.chunk.js"
   },
   {
-    "revision": "a655ef55e90bd82e810f",
+    "revision": "50e3d1309378997c4bd4",
     "url": "/react-scrollable-feed/static/css/main.034cddf7.chunk.css"
   },
   {
-    "revision": "17051983e9954a86814d6d371cbff50c",
+    "revision": "60030958894f1a6474745848e8e04525",
     "url": "/react-scrollable-feed/index.html"
   }
 ];
