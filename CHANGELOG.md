@@ -7,3 +7,7 @@
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/dizco/react-scrollable-feed/compare/v1.0.2...v1.0.3) (2019-01-30)
 * Fixed issue with the automatic bottom detection ([#7](https://github.com/dizco/react-scrollable-feed/issues/7))
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/dizco/react-scrollable-feed/compare/v1.0.3...v1.0.4) (2019-07-09)
+* Updated dependencies
