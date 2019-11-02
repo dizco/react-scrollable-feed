@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - 10
-  - 9
 addons:
   apt:
     packages:
@@ -19,4 +18,6 @@ install:
 script:
   - npm run build
   - npm test
-  - npm start && cd ./example && npm start && cd ../ && npm run cypress:run
+  - npm start &;
+    cd ./example && npm start &;
+    cd .. && npm run cypress:run
