@@ -61,7 +61,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
    * @param parent
    * @param child
    */
-  protected scrollParentToChild(parent: HTMLElement, child: HTMLElement): void {
+  protected scrollParentToChil(parent: HTMLElement, child: HTMLElement): void {
     const { viewableDetectionEpsilon } = this.props;
     if (!ScrollableFeed.isViewable(parent, child, viewableDetectionEpsilon!)) {
       //Source: https://stackoverflow.com/a/45411081/6316091
