@@ -14,9 +14,7 @@ export default class App extends Component {
       this.createItem(),
       this.createItem(),
     ],
-    interval: setInterval(() => {
-      this.addItem();
-    }, App.intervalDelay),
+    interval: undefined,
   };
 
   createItem() {
