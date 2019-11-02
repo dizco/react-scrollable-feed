@@ -17,6 +17,7 @@ install:
   - npm install -g react-scripts
   - npm install react react-dom prop-types
   - npm install
+  - cd ./example && npm install
 script:
 #  - npm run build
 #  - npm test
