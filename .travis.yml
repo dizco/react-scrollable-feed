@@ -14,8 +14,9 @@ cache:
     # we also need to cache folder with Cypress binary
     - ~/.cache
 install:
+  - npm install -g react-scripts
+  - npm install react react-dom prop-types
   - npm install
-  - npm install react react-dom react-scripts prop-types
 script:
 #  - npm run build
 #  - npm test
