@@ -16,8 +16,8 @@ cache:
 install:
   - npm ci
 script:
-  - npm run build
-  - npm test
-  - npm start &;
-    cd ./example && npm start &;
-    cd .. && npm run cypress:run
+#  - npm run build
+#  - npm test
+  - npm start &
+  - cd ./example && npm start &
+  - cd .. && npm run cypress:run
