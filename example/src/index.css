@@ -5,10 +5,14 @@ body {
 }
 
 .scrollable-wrapper {
-  border: 1px solid black;
-  width: 50%;
-  margin: 5rem auto;
   max-height: 300px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .text-center {
