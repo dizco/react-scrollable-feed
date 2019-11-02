@@ -20,4 +20,4 @@ script:
 #  - npm test
   - npm start &
   - cd ./example && npm start &
-  - cd .. && npm run cypress:run
+  - npm run cypress:run
