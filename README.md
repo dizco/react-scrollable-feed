@@ -113,7 +113,7 @@ export default App;
 - Type: `string`
 - Default: `undefined`
 
-`CSS` class that will be added on the wrapping div created by `ScrollableFeed`.
+`CSS` class that can be added on the wrapping div created by `ScrollableFeed`. 
 
 ### `viewableDetectionEpsilon`
 
