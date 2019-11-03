@@ -56,41 +56,33 @@ export default class App extends Component {
     const { items, interval } = this.state;
     return (
       <div className="container">
-      <div className="row d-flex justify-content-center mt-5">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-body">
-              <ul className="scrollable-wrapper list-group list-group-flush">
-                <ScrollableFeed
-                  changeDetectionFilter={(previousProps, newProps) => {
-                    const prevChildren = previousProps.children;
-                    const newChildren = newProps.children;
-
-                    return prevChildren !== newChildren
-                      && prevChildren[prevChildren.length - 1] !== newChildren[newChildren.length - 1];
-                  }}
-                >
-                  {items.map((item, i) => (
-                  <li key={i} className="list-group-item">
-                    <span className="dot mr-2" style={{backgroundColor: item.color}}></span>{item.timestamp}
-                  </li>
-                  ))}
+        <div className="row d-flex justify-content-center mt-5">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-body scrollable-wrapper pt-0 pb-0 mt-2">
+                <ScrollableFeed>
+                  <ul className="list-group list-group-flush">
+                    {items.map((item, i) => (
+                      <li key={i} className="list-group-item">
+                        <span className="dot mr-2" style={{ backgroundColor: item.color }}></span>{item.timestamp}
+                      </li>
+                    ))}
+                  </ul>
                 </ScrollableFeed>
-              </ul>
-            </div>
-            <div className="text-center">
-              <p>{items.length} items</p>
-              <button onClick={() => this.addItem()} type="button" className="btn btn-primary m-2">Add Item</button>
-              {interval ? (
-                <button onClick={() => this.pause()} type="button" className="btn btn-primary m-2">Pause</button>
-              ) : (
-                  <button onClick={() => this.resume()} type="button" className="btn btn-primary m-2">Resume</button>
-                )}
-              <button onClick={() => this.clear()} type="button" className="btn btn-primary m-2">Clear</button>
+              </div>
+              <div className="text-center">
+                <p>{items.length} items</p>
+                <button onClick={() => this.addItem()} type="button" className="btn btn-primary m-2">Add Item</button>
+                {interval ? (
+                  <button onClick={() => this.pause()} type="button" className="btn btn-primary m-2">Pause</button>
+                ) : (
+                    <button onClick={() => this.resume()} type="button" className="btn btn-primary m-2">Autoplay</button>
+                  )}
+                <button onClick={() => this.clear()} type="button" className="btn btn-primary m-2">Clear</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
