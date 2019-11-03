@@ -19,7 +19,7 @@ cache:
 
 before_install:
   - pwd && ls
-  - cd $TRAVIS_BUILD_DIR && pwd && ls
+  - env
 
 install:
   - npm install -g react-scripts
@@ -28,7 +28,7 @@ install:
   - cd ./example && npm install
 
 before_script:
-  - cd .. && pwd && ls
+  - cd $TRAVIS_BUILD_DIR
 
 script:
   - npm run build
@@ -36,4 +36,4 @@ script:
   # Run browser tests
   - npm start -- --silent &
   - cd ./example && npm start -- --silent &
-  - cd .. && npm run cypress:run
+  - cd $TRAVIS_BUILD_DIR && npm run cypress:run
