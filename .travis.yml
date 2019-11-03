@@ -21,6 +21,6 @@ install:
 script:
 #  - npm run build
 #  - npm test
-  - npm start &
-  - cd ./example && npm start &
+  - npm start -- --silent &
+  - cd ./example && npm start -- --silent &
   - npm run cypress:run
