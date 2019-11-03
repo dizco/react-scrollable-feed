@@ -1,11 +1,14 @@
 language: node_js
+
 node_js:
   - 10
+
 addons:
   apt:
     packages:
       # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
       - libgconf-2-4
+
 cache:
   # Caches $HOME/.npm when npm ci is default script command
   # Caches node_modules in all other cases
@@ -13,14 +16,17 @@ cache:
   directories:
     # we also need to cache folder with Cypress binary
     - ~/.cache
+
 install:
   - npm install -g react-scripts
   - npm install react react-dom prop-types
   - npm install
   - cd ./example && npm install
+
 script:
-#  - npm run build
-#  - npm test
+  - npm run build
+  - npm test
+  # Run browser tests
   - npm start -- --silent &
   - cd ./example && npm start -- --silent &
-  - cd .. && pwd && ls && npm run cypress:run
+  - cd .. && npm run cypress:run
