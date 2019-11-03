@@ -23,4 +23,4 @@ script:
 #  - npm test
   - npm start -- --silent &
   - cd ./example && npm start -- --silent &
-  - npm run cypress:run
+  - cd ~/ && npm run cypress:run
