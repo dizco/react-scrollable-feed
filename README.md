@@ -108,6 +108,13 @@ class App extends React.Component {
 export default App;
 ```
 
+### `className`
+
+- Type: `string`
+- Default: `undefined`
+
+`CSS` class that will be added on the wrapping div created by `ScrollableFeed`.
+
 ### `viewableDetectionEpsilon`
 
 - Type: `number`

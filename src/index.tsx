@@ -1,7 +1,6 @@
 import * as React from 'react'
-
-import styles from './styles.css'
 import { ReactNode } from 'react';
+import styles from './styles.css'
 
 export type ScrollableFeedProps = {
   forceScroll?: boolean;
@@ -9,6 +8,7 @@ export type ScrollableFeedProps = {
   onScrollComplete?: () => void;
   changeDetectionFilter?: (previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean;
   viewableDetectionEpsilon?: number;
+  className?: string;
 }
 
 type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
@@ -97,9 +97,10 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
   }
 
   render(): React.ReactNode {
-    const { children } = this.props;
+    const { children, className } = this.props;
+    const joinedClassName = styles.scrollableDiv + (className ? " " + className : "");
     return (
-      <div className={styles.scrollableDiv} ref={this.wrapperRef}>
+      <div className={joinedClassName} ref={this.wrapperRef}>
         {children}
         <div ref={this.bottomRef}></div>
       </div>
