@@ -128,7 +128,7 @@ For more details on how to integrate _react-scrollable-feed_ in your application
 
 ## Contibuting
 - Star this GitHub repo :star:
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:. See [CONTRIBUTING.md](contributing docs).
+- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:. See [contributing doc](CONTRIBUTING.md).
 
 ## License
 
