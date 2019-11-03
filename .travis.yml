@@ -34,6 +34,6 @@ script:
   - npm run build
   - npm test
   # Run browser tests
-  - npm start -- --silent &
-  - cd ./example && npm start -- --silent &
+  - npm run start:silent &
+  - cd ./example && npm run start:silent &
   - cd $TRAVIS_BUILD_DIR && npm run cypress:run
