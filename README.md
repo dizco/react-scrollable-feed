@@ -126,6 +126,10 @@ Indicates the number of pixels of difference between the actual bottom and the c
 
 For more details on how to integrate _react-scrollable-feed_ in your application, have a look at the [example](example) folder.
 
+## Contibuting
+- Star this GitHub repo :star:
+- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:. See [CONTRIBUTING.md](contributing docs).
+
 ## License
 
 MIT © [Gabriel Bourgault](https://github.com/dizco)
