@@ -18,7 +18,7 @@ cache:
     - ~/.cache
 
 before_install:
-  - cd project && pwd && ls
+  - pwd && ls
 
 install:
   - npm install -g react-scripts
@@ -27,7 +27,7 @@ install:
   - cd ./example && npm install
 
 before_script:
-  - cd project && pwd && ls
+  - cd .. && pwd && ls
 
 script:
   - npm run build
