@@ -19,6 +19,7 @@ cache:
 
 before_install:
   - pwd && ls
+  - cd TRAVIS_BUILD_DIR && pwd && ls
 
 install:
   - npm install -g react-scripts
