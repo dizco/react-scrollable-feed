@@ -26,7 +26,7 @@
   </a>
 </p>
 
-UX-wise, asking a user to scroll down manually a chat box when new messages arrive is quite painful. `react-scrollable-feed` aims to alleviate the burden of managing scrolling concerns from React developers. The same concept applies to any other kind of feed where new content arrives dynamically.
+UX-wise, asking a user to scroll down manually a chat box when new messages arrive is quite painful. **react-scrollable-feed** aims to alleviate the burden of managing scrolling concerns from React developers. The same concept applies to any other kind of feed where new content arrives dynamically.
 
 ## Demo
 
