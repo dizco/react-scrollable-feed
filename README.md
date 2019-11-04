@@ -1,15 +1,29 @@
 <h1 align="center" style="border-bottom: none;">react-scrollable-feed</h1>
 <h3 align="center">Smart scrolling for chat UIs and feeds</h3>
 <p align="center">
-  [![Build Status](https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master)](https://travis-ci.com/dizco/react-scrollable-feed)
-  [![NPM](https://img.shields.io/npm/v/react-scrollable-feed.svg)](https://www.npmjs.com/package/react-scrollable-feed)
-  [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+  <a href="https://travis-ci.com/dizco/react-scrollable-feed">
+    <img alt="Build Status" src="https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master">
+  </a>
+  <a href="https://www.npmjs.com/package/react-scrollable-feed">
+    <img alt="NPM" src="https://img.shields.io/npm/v/react-scrollable-feed.svg">
+  </a>
+  <a href="https://standardjs.com">
+    <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+  </a>
 </p>
 <p align="center">
-  [![dependencies Status](https://david-dm.org/dizco/react-scrollable-feed/status.svg)](https://david-dm.org/dizco/react-scrollable-feed)
-  [![devDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=dev)
-  [![peerDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=peer)
+  <a href="https://david-dm.org/dizco/react-scrollable-feed">
+    <img alt="dependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/status.svg">
+  </a>
+  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=dev">
+    <img alt="devDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg">
+  </a>
+  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=peer">
+    <img alt="peerDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg">
+  </a>
 </p>
 
 UX-wise, asking a user to scroll down manually a chat box when new messages arrive is quite painful. `react-scrollable-feed` aims to alleviate the burden of managing scrolling concerns from React developers. The same concept applies to any other kind of feed where new content arrives dynamically.
