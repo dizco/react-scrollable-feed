@@ -62,28 +62,28 @@ class App extends React.Component {
 
 ## Options
 
-### `forceScroll`
+### forceScroll
 
 - Type: `boolean`
 - Default: `false`
 
 If set to true, will scroll to the bottom after each update on the component. By default, if the scrollable section is not at the bottom _before_ the update occurs, it will leave the scroll at the same position.
 
-### `animateScroll`
+### animateScroll
 
 - Type: `(element: HTMLElement, offset: number) => void`
 - Default: `element.scrollBy({ top: offset });`
 
 Allows to override the scroll animation by any implementation.
 
-### `onScrollComplete`
+### onScrollComplete
 
 - Type: `() => void`
 - Default: `() => {}`
 
 Is called after the scroll animation has been executed.
 
-### `changeDetectionFilter`
+### changeDetectionFilter
 
 - Type: `(previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean`
 - Default: `() => true`
@@ -124,14 +124,14 @@ class App extends React.Component {
 export default App;
 ```
 
-### `className`
+### className
 
 - Type: `string`
 - Default: `undefined`
 
 `CSS` class that can be added on the wrapping div created by `ScrollableFeed`. 
 
-### `viewableDetectionEpsilon`
+### viewableDetectionEpsilon
 
 - Type: `number`
 - Default: `2`
