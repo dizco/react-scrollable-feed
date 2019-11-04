@@ -5,7 +5,7 @@
     <img alt="Build Status" src="https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/react-scrollable-feed">
-    <img alt="NPM" src="https://img.shields.io/npm/v/react-scrollable-feed.svg">
+    <img alt="NPM latest version" src="https://img.shields.io/npm/v/react-scrollable-feed/latest.svg">
   </a>
   <a href="https://standardjs.com">
     <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
