@@ -21,11 +21,11 @@
   <a href="https://david-dm.org/dizco/react-scrollable-feed">
     <img alt="dependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/status.svg">
   </a>
-  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=dev">
-    <img alt="devDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg">
-  </a>
   <a href="https://david-dm.org/dizco/react-scrollable-feed?type=peer">
     <img alt="peerDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg">
+  </a>
+  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=dev">
+    <img alt="devDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg">
   </a>
 </p>
 
