@@ -19,7 +19,7 @@ cache:
 
 before_install:
   - pwd && ls
-  - env
+  - env | sort
 
 install:
   - npm install -g react-scripts
