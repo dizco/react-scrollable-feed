@@ -1,6 +1,7 @@
 describe('Demo page', () => {
   beforeEach(() => {
     cy.visit('/');
+    cy.visit('/');
   });
 
   it('successfully loads', () => {
