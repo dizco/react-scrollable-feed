@@ -17,9 +17,12 @@
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
+    "start:silent": "npm start -- --silent",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "cypress:open": "cross-env CYPRESS_CRASH_REPORTS=0 cypress open",
+    "cypress:run": "cross-env CYPRESS_CRASH_REPORTS=0 cypress run"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -28,15 +31,18 @@
     "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.1",
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.2.0",
+    "cypress": "^3.6.0",
     "gh-pages": "^2.0.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-scripts-ts": "^4.0.8",
     "rollup": "^1.16.7",
     "rollup-plugin-babel": "^4.3.3",

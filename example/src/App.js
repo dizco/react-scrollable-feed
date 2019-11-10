@@ -1,63 +1,89 @@
 import React, { Component } from 'react';
 
 import ScrollableFeed from 'react-scrollable-feed';
+import { RandomColorGenerator } from './random-color-generator';
 
 export default class App extends Component {
 
-  constructor(props) {
-    super(props);
-    setInterval(() => {
-      this.addItem();
-    }, 800);
-  }
+  static intervalDelay = 800;
 
   state = {
     items: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Aliquam semper purus vitae commodo elementum.',
-      'Maecenas condimentum lacus eget varius accumsan.',
-      'Mauris mattis orci sit amet mi consequat tristique.',
-      'Aliquam lobortis pulvinar fermentum.',
-      'Donec malesuada, sem non scelerisque imperdiet.',
-      'Quisque egestas.',
-      'Etiam scelerisque tincidunt enim, in dictum metus dapibus.',
-      'Quisque eu eros mattis, finibus lorem ut, commodo ipsum.',
-      'Vivamus cursus tempor nibh ac aliquet.',
-      'Nulla posuere gravida ligula tincidunt efficitur.',
-      'Phasellus vel convallis neque, id placerat elit.',
-      'Aenean nibh purus, consectetur hendrerit egestas in.',
-      'Aliquam pretium, sapien tempus posuere eleifend.',
-      'Sed eget viverra.',
+      this.createItem(),
+      this.createItem(),
+      this.createItem(),
+      this.createItem(),
     ],
+    interval: undefined,
   };
+
+  createItem() {
+    return {
+      timestamp: new Date().toISOString(),
+      color: RandomColorGenerator.get(),
+    }
+  }
 
   addItem() {
     this.setState(prevState => ({
-      items: [...prevState.items, new Date().toISOString()]
+      items: [...prevState.items, this.createItem()]
+    }));
+  }
+
+  pause() {
+    clearInterval(this.state.interval);
+    this.setState(_ => ({
+      interval: undefined
+    }));
+  }
+
+  resume() {
+    const interval = setInterval(() => {
+      this.addItem();
+    }, App.intervalDelay);
+    this.setState(_ => ({
+      interval
+    }));
+  }
+
+  clear() {
+    this.setState(_ => ({
+      items: []
     }));
   }
 
   render() {
-    const { items } = this.state;
+    const { items, interval } = this.state;
     return (
-      <section>
-        <div className={'scrollable-wrapper'}>
-          <ScrollableFeed
-            changeDetectionFilter={(previousProps, newProps) => {
-              const prevChildren = previousProps.children;
-              const newChildren = newProps.children;
-
-              return prevChildren !== newChildren
-                && prevChildren[prevChildren.length - 1] !== newChildren[newChildren.length - 1];
-            }}
-          >
-            {items.map((item, i) => <div key={i}>{item}</div>)}
-          </ScrollableFeed>
+      <div className="container">
+        <div className="row d-flex justify-content-center mt-5">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-body scrollable-wrapper pt-0 pb-0 mt-2">
+                <ScrollableFeed>
+                  <ul className="list-group list-group-flush">
+                    {items.map((item, i) => (
+                      <li key={i} className="list-group-item">
+                        <span className="dot mr-2" style={{ backgroundColor: item.color }}></span>{item.timestamp}
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollableFeed>
+              </div>
+              <div className="text-center">
+                <p>{items.length} items</p>
+                <button onClick={() => this.addItem()} type="button" className="btn btn-primary m-2">Add Item</button>
+                {interval ? (
+                  <button onClick={() => this.pause()} type="button" className="btn btn-primary m-2">Pause</button>
+                ) : (
+                    <button onClick={() => this.resume()} type="button" className="btn btn-primary m-2">Autoplay</button>
+                  )}
+                <button onClick={() => this.clear()} type="button" className="btn btn-primary m-2">Clear</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={'text-center'}>
-          <button onClick={() => this.addItem()}>Add Item</button>
-        </div>
-      </section>
+      </div>
     );
   }
 }

@@ -1,16 +1,35 @@
-# react-scrollable-feed
+<h1 align="center" style="border-bottom: none;">react-scrollable-feed</h1>
+<h3 align="center">Smart scrolling for chat UIs and feeds</h3>
+<p align="center">
+  <a href="https://travis-ci.com/dizco/react-scrollable-feed">
+    <img alt="Build Status" src="https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master">
+  </a>
+  <a href="https://dashboard.cypress.io/#/projects/eyny7g">
+    <img alt="Cypress Dashboard" src="https://img.shields.io/badge/cypress-dashboard-brightgreen.svg">
+  </a>
+  <a href="https://www.npmjs.com/package/react-scrollable-feed">
+    <img alt="NPM latest version" src="https://img.shields.io/npm/v/react-scrollable-feed/latest.svg">
+  </a>
+  <a href="https://standardjs.com">
+    <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+  </a>
+</p>
+<p align="center">
+  <a href="https://david-dm.org/dizco/react-scrollable-feed">
+    <img alt="dependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/status.svg">
+  </a>
+  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=dev">
+    <img alt="devDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg">
+  </a>
+  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=peer">
+    <img alt="peerDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg">
+  </a>
+</p>
 
-> 
-
-[![Build Status](https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master)](https://travis-ci.com/dizco/react-scrollable-feed)
-[![NPM](https://img.shields.io/npm/v/react-scrollable-feed.svg)](https://www.npmjs.com/package/react-scrollable-feed)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![dependencies Status](https://david-dm.org/dizco/react-scrollable-feed/status.svg)](https://david-dm.org/dizco/react-scrollable-feed)
-[![devDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=dev)
-[![peerDependencies Status](https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg)](https://david-dm.org/dizco/react-scrollable-feed?type=peer)
-
-Perfect for any chat UI or any kind of feed.
+UX-wise, asking a user to scroll down manually a chat box when new messages arrive is quite painful. **react-scrollable-feed** aims to alleviate the burden of managing scrolling concerns from React developers. The same concept applies to any other kind of feed where new content arrives dynamically.
 
 ## Demo
 
@@ -46,28 +65,28 @@ class App extends React.Component {
 
 ## Options
 
-### `forceScroll`
+### forceScroll
 
 - Type: `boolean`
 - Default: `false`
 
 If set to true, will scroll to the bottom after each update on the component. By default, if the scrollable section is not at the bottom _before_ the update occurs, it will leave the scroll at the same position.
 
-### `animateScroll`
+### animateScroll
 
 - Type: `(element: HTMLElement, offset: number) => void`
 - Default: `element.scrollBy({ top: offset });`
 
 Allows to override the scroll animation by any implementation.
 
-### `onScrollComplete`
+### onScrollComplete
 
 - Type: `() => void`
 - Default: `() => {}`
 
 Is called after the scroll animation has been executed.
 
-### `changeDetectionFilter`
+### changeDetectionFilter
 
 - Type: `(previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean`
 - Default: `() => true`
@@ -108,7 +127,14 @@ class App extends React.Component {
 export default App;
 ```
 
-### `viewableDetectionEpsilon`
+### className
+
+- Type: `string`
+- Default: `undefined`
+
+`CSS` class that can be added on the wrapping div created by `ScrollableFeed`. 
+
+### viewableDetectionEpsilon
 
 - Type: `number`
 - Default: `2`
@@ -118,6 +144,10 @@ Indicates the number of pixels of difference between the actual bottom and the c
 ## For more details
 
 For more details on how to integrate _react-scrollable-feed_ in your application, have a look at the [example](example) folder.
+
+## Contibuting
+- Star this GitHub repo :star:
+- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:. See [contributing doc](CONTRIBUTING.md).
 
 ## License
 
