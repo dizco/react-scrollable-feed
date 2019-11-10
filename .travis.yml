@@ -36,4 +36,4 @@ script:
   # Run browser tests
   - npm run start:silent &
   - cd ./example && npm run start:silent &
-  - cd $TRAVIS_BUILD_DIR && npm run cypress:run
+  - cd $TRAVIS_BUILD_DIR && npm run cypress:run -- --record --key $CYPRESS_KEY
