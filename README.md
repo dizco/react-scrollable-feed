@@ -4,6 +4,9 @@
   <a href="https://travis-ci.com/dizco/react-scrollable-feed">
     <img alt="Build Status" src="https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master">
   </a>
+  <a href="https://dashboard.cypress.io/#/projects/eyny7g">
+    <img alt="Cypress Dashboard" src="https://img.shields.io/badge/cypress-dashboard-brightgreen.svg">
+  </a>
   <a href="https://www.npmjs.com/package/react-scrollable-feed">
     <img alt="NPM latest version" src="https://img.shields.io/npm/v/react-scrollable-feed/latest.svg">
   </a>
