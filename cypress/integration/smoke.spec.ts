@@ -4,7 +4,7 @@ describe('Demo page', () => {
   });
 
   it('successfully loads', () => {
-    cy.get('.scrollable-wrapper li')
+    cy.get('.scrollable-wrapper li', { timeout: 10000 })
       .should('have.length', 4);
   });
 
