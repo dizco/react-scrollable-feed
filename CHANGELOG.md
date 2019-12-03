@@ -1,5 +1,9 @@
 # Change Log 
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/dizco/react-scrollable-feed/compare/v1.1.0...v1.1.1) (2019-12-03)
+* Fix issue with scrolling on Edge, Firefox ([#20](https://github.com/dizco/react-scrollable-feed/issues/20))
+
 <a name="1.1.0"></a>
 ## [1.1.0](https://github.com/dizco/react-scrollable-feed/compare/v1.0.4...v1.1.0) (2019-11-10)
 * Added `className` prop
