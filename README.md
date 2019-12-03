@@ -75,7 +75,15 @@ If set to true, will scroll to the bottom after each update on the component. By
 ### animateScroll
 
 - Type: `(element: HTMLElement, offset: number) => void`
-- Default: `element.scrollBy({ top: offset });`
+- Default:
+```ts
+if (element.scrollBy) {
+  element.scrollBy({ top: offset });
+}
+else {
+  element.scrollTop = offset;
+}
+```
 
 Allows to override the scroll animation by any implementation.
 

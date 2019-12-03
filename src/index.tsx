@@ -26,7 +26,12 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
   static defaultProps: ScrollableFeedProps = {
     forceScroll: false,
     animateScroll: (element: HTMLElement, offset: number): void => {
-      element.scrollBy({ top: offset });
+      if (element.scrollBy) {
+        element.scrollBy({ top: offset });
+      }
+      else {
+        element.scrollTop = offset;
+      }
     },
     onScrollComplete: () => {},
     changeDetectionFilter: () => true,
