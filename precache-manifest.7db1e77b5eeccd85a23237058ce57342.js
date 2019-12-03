@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/react-scrollable-feed/static/js/runtime~main.64cf9784.js"
   },
   {
-    "revision": "d2e505ac4f2ff30df871",
-    "url": "/react-scrollable-feed/static/js/main.d2e505ac.chunk.js"
+    "revision": "daa20ed192d1df3faae8",
+    "url": "/react-scrollable-feed/static/js/main.daa20ed1.chunk.js"
   },
   {
     "revision": "e63eb37410ff38f0a091",
     "url": "/react-scrollable-feed/static/js/1.e63eb374.chunk.js"
   },
   {
-    "revision": "d2e505ac4f2ff30df871",
+    "revision": "daa20ed192d1df3faae8",
     "url": "/react-scrollable-feed/static/css/main.b7f61cb5.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/react-scrollable-feed/static/css/1.530b6424.chunk.css"
   },
   {
-    "revision": "80d70b72b20778ab778bbab731c70ee1",
+    "revision": "b352cd22d6b68249550ff5a5fc8fcb28",
     "url": "/react-scrollable-feed/index.html"
   }
 ];
