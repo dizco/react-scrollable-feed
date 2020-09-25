@@ -9,6 +9,7 @@ export type ScrollableFeedProps = {
   changeDetectionFilter?: (previousProps: ScrollableFeedComponentProps, newProps: ScrollableFeedComponentProps) => boolean;
   viewableDetectionEpsilon?: number;
   className?: string;
+  onScroll?: (isAtBottom: boolean) => void;
 }
 
 type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
@@ -21,6 +22,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     super(props);
     this.bottomRef = React.createRef();
     this.wrapperRef = React.createRef();
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   static defaultProps: ScrollableFeedProps = {
@@ -36,6 +38,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     onScrollComplete: () => {},
     changeDetectionFilter: () => true,
     viewableDetectionEpsilon: 2,
+    onScroll: () => {},
   };
 
   getSnapshotBeforeUpdate(): boolean {
@@ -101,11 +104,23 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return childTopIsViewable && childBottomIsViewable;
   }
 
+
+  /**
+   * Fires the onScroll event, sending isAtBottom boolean as its first parameter
+   */
+  protected handleScroll(): void {
+    const { viewableDetectionEpsilon, onScroll } = this.props;
+    if (onScroll && this.bottomRef.current && this.wrapperRef.current) {
+      const isAtBottom = ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current, viewableDetectionEpsilon!);
+      onScroll(isAtBottom);
+    }
+  }
+
   render(): React.ReactNode {
     const { children, className } = this.props;
     const joinedClassName = styles.scrollableDiv + (className ? " " + className : "");
     return (
-      <div className={joinedClassName} ref={this.wrapperRef}>
+      <div className={joinedClassName} ref={this.wrapperRef} onScroll={this.handleScroll}>
         {children}
         <div ref={this.bottomRef}></div>
       </div>
