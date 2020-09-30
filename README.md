@@ -140,7 +140,7 @@ export default App;
 - Type: `string`
 - Default: `undefined`
 
-`CSS` class that can be added on the wrapping div created by `ScrollableFeed`. 
+`CSS` class that can be added on the wrapping div created by `ScrollableFeed`.
 
 ### viewableDetectionEpsilon
 
@@ -148,6 +148,15 @@ export default App;
 - Default: `2`
 
 Indicates the number of pixels of difference between the actual bottom and the current position that can be tolerated. The default setting should be fine for most use cases.
+
+### onScroll
+
+- Type: `(isAtBottom: boolean) => void`
+- Default: `() => {}`
+
+Is called when the `onScroll` event is triggered on the wrapper div created by `ScrollableFeed`.
+
+Provides `isAtBottom` boolean value as a parameter, which indicates if the scroll is at bottom position, taking `viewableDetectionEpsilon` into account.
 
 ## For more details
 
