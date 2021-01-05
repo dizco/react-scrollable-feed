@@ -158,6 +158,14 @@ Is called when the `onScroll` event is triggered on the wrapper div created by `
 
 Provides `isAtBottom` boolean value as a parameter, which indicates if the scroll is at bottom position, taking `viewableDetectionEpsilon` into account.
 
+## Public Methods
+
+### scrollToBottom
+
+- Signature: `() => void`
+
+Scroll to the bottom
+
 ## For more details
 
 For more details on how to integrate _react-scrollable-feed_ in your application, have a look at the [example](example) folder.
