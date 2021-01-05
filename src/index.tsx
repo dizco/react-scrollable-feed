@@ -104,7 +104,6 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     return childTopIsViewable && childBottomIsViewable;
   }
 
-
   /**
    * Fires the onScroll event, sending isAtBottom boolean as its first parameter
    */
@@ -113,6 +112,15 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     if (onScroll && this.bottomRef.current && this.wrapperRef.current) {
       const isAtBottom = ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current, viewableDetectionEpsilon!);
       onScroll(isAtBottom);
+    }
+  }
+
+  /**
+   * Scroll to the bottom
+   */
+  public scrollToBottom(): void {
+    if (this.bottomRef.current && this.wrapperRef.current) {
+      this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
     }
   }
 
