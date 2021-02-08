@@ -5,7 +5,7 @@ body {
 }
 
 .scrollable-wrapper {
-  max-height: 300px;
+  height: 300px;
 }
 
 .dot {

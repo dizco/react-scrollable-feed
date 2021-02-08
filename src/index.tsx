@@ -88,6 +88,7 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
 
   /**
    * Returns whether a child element is visible within a parent element
+   *
    * @param parent
    * @param child
    * @param epsilon
@@ -100,7 +101,10 @@ class ScrollableFeed extends React.Component<ScrollableFeedProps> {
     const childRect = child.getBoundingClientRect();
 
     const childTopIsViewable = (childRect.top >= parentRect.top);
-    const childBottomIsViewable = (Math.abs(parentRect.top + parent.clientHeight - childRect.top) <= epsilon); //Use epsilon because getBoundingClientRect might return floats https://stackoverflow.com/a/40879359/6316091
+
+    const childOffsetToParentBottom = parentRect.top + parent.clientHeight - childRect.top;
+    const childBottomIsViewable = childOffsetToParentBottom + epsilon >= 0;
+
     return childTopIsViewable && childBottomIsViewable;
   }
 
