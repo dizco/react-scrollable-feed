@@ -30,4 +30,25 @@ describe('Demo page', () => {
       .first()
       .should('not.be.visible');
   });
+
+  it('force scrolls', () => {
+    cy.contains('Add Item')
+      .click()
+      .click()
+      .click()
+      .click();
+
+    cy.get('.scrollable-wrapper li')
+      .first()
+      .scrollIntoView();
+    cy.get('.scrollable-wrapper li')
+      .last()
+      .should('not.be.visible');
+
+    cy.contains('Scroll to Bottom')
+      .click();
+    cy.get('.scrollable-wrapper li')
+      .last()
+      .should('be.visible');
+  });
 })
