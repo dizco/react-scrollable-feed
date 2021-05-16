@@ -24,7 +24,6 @@
     "cypress:open": "cross-env CYPRESS_CRASH_REPORTS=0 cypress open",
     "cypress:run": "cross-env CYPRESS_CRASH_REPORTS=0 cypress run"
   },
-  "dependencies": {},
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
