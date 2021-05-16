@@ -1,7 +1,11 @@
 # Change Log
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/dizco/react-scrollable-feed/compare/v1.3.0...v1.3.1) (2021-05-16)
+* Updated dependencies
+
 <a name="1.3.0"></a>
-## [1.2.0](https://github.com/dizco/react-scrollable-feed/compare/v1.2.0...v1.3.0) (2020-09-30)
+## [1.3.0](https://github.com/dizco/react-scrollable-feed/compare/v1.2.0...v1.3.0) (2021-02-11)
 * Added `scrollToBottom` public method
 * Fix issue with scrolling when wrapper has fixed height ([#34](https://github.com/dizco/react-scrollable-feed/issues/34))
 * Updated dependencies
