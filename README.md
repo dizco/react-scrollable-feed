@@ -10,9 +10,6 @@
   <a href="https://www.npmjs.com/package/react-scrollable-feed">
     <img alt="NPM latest version" src="https://img.shields.io/npm/v/react-scrollable-feed/latest.svg">
   </a>
-  <a href="https://standardjs.com">
-    <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
-  </a>
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
   </a>
