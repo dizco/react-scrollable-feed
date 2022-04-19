@@ -14,18 +14,18 @@ export type ScrollableFeedProps = {
 
 type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
 
-class ScrollableFeed extends React.Component<ScrollableFeedProps> {
+class ScrollableFeed extends React.Component<ScrollableFeedComponentProps> {
   private readonly wrapperRef: React.RefObject<HTMLDivElement>;
   private readonly bottomRef: React.RefObject<HTMLDivElement>;
 
-  constructor(props: ScrollableFeedProps) {
+  constructor(props: ScrollableFeedComponentProps) {
     super(props);
     this.bottomRef = React.createRef();
     this.wrapperRef = React.createRef();
     this.handleScroll = this.handleScroll.bind(this);
   }
 
-  static defaultProps: ScrollableFeedProps = {
+  static defaultProps: ScrollableFeedComponentProps = {
     forceScroll: false,
     animateScroll: (element: HTMLElement, offset: number): void => {
       if (element.scrollBy) {
