@@ -9,7 +9,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^2.1.1",
+    "react-scripts": "^5.0.1",
     "react-scrollable-feed": "file:.."
   },
   "scripts": {
