@@ -14,17 +14,6 @@
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
   </a>
 </p>
-<p align="center">
-  <a href="https://david-dm.org/dizco/react-scrollable-feed">
-    <img alt="dependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/status.svg">
-  </a>
-  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=peer">
-    <img alt="peerDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/peer-status.svg">
-  </a>
-  <a href="https://david-dm.org/dizco/react-scrollable-feed?type=dev">
-    <img alt="devDependencies Status" src="https://david-dm.org/dizco/react-scrollable-feed/dev-status.svg">
-  </a>
-</p>
 
 UX-wise, asking a user to scroll down manually a chat box when new messages arrive is quite painful. **react-scrollable-feed** aims to alleviate the burden of managing scrolling concerns from React developers. The same concept applies to any other kind of feed where new content arrives dynamically.
 
