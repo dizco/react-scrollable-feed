@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: env | sort
+    
+    - name: Install react-scripts
+      run: npm install -g react-scripts
+    - name: Install React
+      run: npm install react react-dom prop-types
+    - run: npm install
+    - name: Install example
+      run: cd ./example && npm install && cd ..
+      
+    - run: npm run build
+    - run: npm test
+    - run: |
+        npm run start:silent > /dev/null 2>&1 &
+        cd ./example && npm run start:silent > /dev/null 2>&1 &
+        cd .. && npm run cypress:run -- --record --key $CYPRESS_KEY
