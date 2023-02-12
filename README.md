@@ -1,8 +1,8 @@
 <h1 align="center" style="border-bottom: none;">react-scrollable-feed</h1>
 <h3 align="center">Smart scrolling for chat UIs and feeds</h3>
 <p align="center">
-  <a href="https://travis-ci.com/dizco/react-scrollable-feed">
-    <img alt="Build Status" src="https://travis-ci.com/dizco/react-scrollable-feed.svg?branch=master">
+  <a href="https://github.com/dizco/react-scrollable-feed/actions/workflows/main.yml">
+    <img alt="Build Status" src="https://github.com/dizco/react-scrollable-feed/actions/workflows/main.yml/badge.svg?branch=master">
   </a>
   <a href="https://dashboard.cypress.io/#/projects/eyny7g">
     <img alt="Cypress Dashboard" src="https://img.shields.io/badge/cypress-dashboard-brightgreen.svg">
