@@ -33,4 +33,4 @@ jobs:
     - run: |
         npm run start:silent > /dev/null 2>&1 &
         cd ./example && npm run start:silent > /dev/null 2>&1 &
-        cd .. && npm run cypress:run -- --record --key $CYPRESS_KEY
+        npm run cypress:run -- --record --key $CYPRESS_KEY
