@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ScrollableFeed from 'react-scrollable-feed';
+import ScrollableFeed, { ScrollDirection } from 'react-scrollable-feed';
 import { RandomColorGenerator } from './random-color-generator';
 
 export default class App extends Component {
@@ -15,6 +15,7 @@ export default class App extends Component {
 
   state = {
     isAtBottom: true,
+    isAtTop: true,
     items: [
       this.createItem(),
       this.createItem(),
@@ -24,9 +25,10 @@ export default class App extends Component {
     interval: undefined,
   };
 
-  updateIsAtBottomState(result) {
+  updateStates(isAtBottom, isAtTop) {
     this.setState({
-      isAtBottom: result
+      isAtBottom,
+      isAtTop
     });
   }
 
@@ -69,8 +71,12 @@ export default class App extends Component {
     this.scrollableRef.current.scrollToBottom();
   }
 
+  scrollToTop() {
+    this.scrollableRef.current.scrollToTop();
+  }
+
   render() {
-    const { isAtBottom, items, interval } = this.state;
+    const { isAtBottom, isAtTop, items, interval } = this.state;
     return (
       <div className="container">
         <div className="row d-flex justify-content-center mt-5">
@@ -79,7 +85,8 @@ export default class App extends Component {
               <div className="card-body scrollable-wrapper pt-0 pb-0 mt-2">
                 <ScrollableFeed
                   ref={this.scrollableRef}
-                  onScroll={isAtBottom => this.updateIsAtBottomState(isAtBottom)}
+                  onScroll={(isAtBottom, isAtTop) => this.updateStates(isAtBottom, isAtTop)}
+                  scrollDirection={ScrollDirection.Upwards}
                 >
                   <ul className="list-group list-group-flush">
                     {items.map((item, i) => (
@@ -99,7 +106,22 @@ export default class App extends Component {
                     <button onClick={() => this.resume()} type="button" className="btn btn-primary m-2">Autoplay</button>
                   )}
                 <button onClick={() => this.scrollToBottom()} disabled={isAtBottom} type="button" className="btn btn-primary m-2">Scroll to Bottom</button>
+                <button onClick={() => this.scrollToTop()} disabled={isAtTop} type="button" className="btn btn-primary m-2">Scroll to Top</button>
                 <button onClick={() => this.clear()} type="button" className="btn btn-primary m-2">Clear</button>
+                <select class="custom-select">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"/>
+                  <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input"/>
+  <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+</div>
               </div>
             </div>
           </div>
