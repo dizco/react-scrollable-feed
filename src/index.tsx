@@ -14,7 +14,7 @@ export type ScrollableFeedProps = {
 
 type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
 
-class ScrollableFeed extends React.Component<ScrollableFeedProps> {
+class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableFeedProps>> {
   private readonly wrapperRef: React.RefObject<HTMLDivElement>;
   private readonly bottomRef: React.RefObject<HTMLDivElement>;
 
