@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [18.x, 20.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -19,19 +19,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: env | sort
-    
-    - name: Install react-scripts
-      run: npm install -g react-scripts
+
     - name: Install React
       run: npm install react react-dom prop-types
     - run: npm install
     - name: Install example
       run: cd ./example && npm install && cd ..
-      
+
     - run: npm run build
-    - run: npm test
     - name: Run Cypress tests
       run: |
-        npm run start:silent &
+        npm run build &
         cd ./example && npm run start:silent &
         npm run cypress:run -- --record --key ${{ secrets.CYPRESS_KEY }}

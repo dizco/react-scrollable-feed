@@ -2,10 +2,10 @@
 
 Local development is broken into two parts (ideally using two tabs).
 
-First, run rollup to watch your `src/` module and automatically recompile it into `dist/` whenever you make changes.
+First, run microbundle to watch your `src/` module and automatically recompile it into `dist/` whenever you make changes.
 
 ```bash
-npm start # runs rollup with watch flag
+npm run dev # runs with watch flag
 ```
 
 The second part will be running the `example/` create-react-app that's linked to the local version of your module.
@@ -27,9 +27,9 @@ Now, anytime you make a change to your library in `src/` or to the example app's
 npm publish
 ```
 
-This builds `cjs` and `es` versions of your module to `dist/` and then publishes your module to `npm`.
+This builds `cjs`, `es` and 'modern' versions of your module to `dist/` and then publishes your module to `npm`.
 
-Make sure that any npm modules you want as peer dependencies are properly marked as `peerDependencies` in `package.json`. The rollup config will automatically recognize them as peers and not try to bundle them in your module.
+Make sure that any npm modules you want as peer dependencies are properly marked as `peerDependencies` in `package.json`. The microbundle config will automatically recognize them as peers and not try to bundle them in your module.
 
 
 #### Deploying to Github Pages
