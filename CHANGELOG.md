@@ -1,5 +1,13 @@
 # Change Log
 
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/dizco/react-scrollable-feed/compare/v2.0.0...v1.3.2) (2023-12-31)
+* Fix issue with children props typing ([#87](https://github.com/dizco/react-scrollable-feed/issues/87))
+* Updated dependencies
+* Build with Node 18 and Node 20
+* Rebuild package bundling with [developit/microbundle ](https://github.com/developit/microbundle) instead of Rollup
+* Updated license to BSD 3-clause
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/dizco/react-scrollable-feed/compare/v1.3.1...v1.3.2) (2023-01-14)
 * Updated dependencies
