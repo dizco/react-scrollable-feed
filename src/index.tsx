@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { ReactNode } from 'react';
 import styles from './styles.css'
 
 export type ScrollableFeedProps = {
@@ -12,7 +11,7 @@ export type ScrollableFeedProps = {
   onScroll?: (isAtBottom: boolean) => void;
 }
 
-type ScrollableFeedComponentProps = Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>;
+type ScrollableFeedComponentProps = React.PropsWithChildren<ScrollableFeedProps>;
 
 class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableFeedProps>> {
   private readonly wrapperRef: React.RefObject<HTMLDivElement>;
