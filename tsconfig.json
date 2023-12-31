@@ -18,6 +18,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src/**/*", "node_modules/microbundle/index.d.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist", "example"]
 }
