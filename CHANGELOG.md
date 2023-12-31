@@ -1,10 +1,5 @@
 # Change Log
 
-<a name="1.3.3"></a>
-## [1.3.3](https://github.com/dizco/react-scrollable-feed/compare/v1.3.2...v1.3.3) (2023-12-31)
-* Fix issue with children props typing ([#87](https://github.com/dizco/react-scrollable-feed/issues/87))
-* Updated dependencies
-
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/dizco/react-scrollable-feed/compare/v1.3.1...v1.3.2) (2023-01-14)
 * Updated dependencies
