@@ -96,7 +96,7 @@ export default class App extends Component<Props, State> {
                     <ul className="list-group list-group-flush">
                       {items.map((item, i) => (
                           <li key={i} className="list-group-item">
-                            <span className="dot mr-2" style={{ backgroundColor: item.color }}></span>{item.timestamp}
+                            <span className="dot me-2" style={{ backgroundColor: item.color }}></span>{item.timestamp}
                           </li>
                       ))}
                     </ul>
