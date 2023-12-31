@@ -162,4 +162,6 @@ For more details on how to integrate _react-scrollable-feed_ in your application
 
 ## License
 
-MIT © [Gabriel Bourgault](https://github.com/dizco)
+BSD 3-Clause © [Gabriel Bourgault](https://github.com/dizco)
+
+See [license](LICENSE).
