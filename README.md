@@ -87,7 +87,7 @@ Is called after the scroll animation has been executed.
 
 Allows to customize _when_ the scroll should occur. This will be called everytime a `componentDidUpdate` happens, which means everytime one of the props changes. You will receive as parameters the previous and the new props.
 
-Note: `ScrollableFeedComponentProps` is defined as `Readonly<{ children?: ReactNode }> & Readonly<ScrollableFeedProps>`
+Note: `ScrollableFeedComponentProps` is defined as `React.PropsWithChildren<ScrollableFeedProps>`
 
 If you want to compare the last children from both the previous and new props, you could do something like this :
 
