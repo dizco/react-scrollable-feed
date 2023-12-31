@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "react-scrollable-feed",
+  "name": "react-scrollable-feed",
   "icons": [
     {
       "src": "favicon.ico",
