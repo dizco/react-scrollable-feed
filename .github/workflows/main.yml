@@ -20,8 +20,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: env | sort
 
-    - name: Install react-scripts
-      run: npm install -g react-scripts
     - name: Install React
       run: npm install react react-dom prop-types
     - run: npm install
@@ -29,9 +27,8 @@ jobs:
       run: cd ./example && npm install && cd ..
 
     - run: npm run build
-    - run: npm test
     - name: Run Cypress tests
       run: |
-        npm run start:silent &
+        npm run build &
         cd ./example && npm run start:silent &
         npm run cypress:run -- --record --key ${{ secrets.CYPRESS_KEY }}

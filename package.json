@@ -15,7 +15,12 @@
   },
   "scripts": {
     "dev": "microbundle watch",
-    "build": "microbundle"
+    "build": "microbundle",
+    "prepare": "npm run build",
+    "predeploy": "cd example && npm install && npm run build",
+    "deploy": "gh-pages -d example/build",
+    "cypress:open": "cross-env CYPRESS_CRASH_REPORTS=0 cypress open",
+    "cypress:run": "cross-env CYPRESS_CRASH_REPORTS=0 cypress run"
   },
   "author": "dizco",
   "license": "MIT",
@@ -30,6 +35,9 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.46",
+    "cross-env": "^7.0.3",
+    "cypress": "^13.6.2",
+    "gh-pages": "^6.1.1",
     "microbundle": "^0.15.1"
   }
 }

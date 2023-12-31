@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:silent": "npm start >/dev/null",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
