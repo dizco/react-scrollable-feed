@@ -1,7 +1,11 @@
 # Change Log
 
 <a name="2.0.0"></a>
-## [2.0.0](https://github.com/dizco/react-scrollable-feed/compare/v2.0.0...v1.3.2) (2023-12-31)
+## [2.0.1](https://github.com/dizco/react-scrollable-feed/compare/v2.0.0...v2.0.1) (2023-12-31)
+* Remove src and other directories from the published package
+
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/dizco/react-scrollable-feed/compare/v1.3.2...v2.0.0) (2023-12-31)
 * Fix issue with children props typing ([#87](https://github.com/dizco/react-scrollable-feed/issues/87))
 * Updated dependencies
 * Build with Node 18 and Node 20
