@@ -58,7 +58,7 @@ jobs:
     - name: Install example
       run: cd ./example && npm install && cd ..
     - name: Set public url
-      run: cd ./example && echo "PUBLIC_URL=react-scrollable-feed" >> $GITHUB_ENV
+      run: cd ./example && echo "PUBLIC_URL=." >> $GITHUB_ENV
     - name: Test
       run: echo ${{ env.PUBLIC_URL }}
     - name: Build demo
