@@ -47,15 +47,25 @@ jobs:
         cd ./example && npm run start:silent &
         npm run cypress:run -- --record --key ${{ secrets.CYPRESS_KEY }}
 
+  buildDemo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install React
+      run: npm install react react-dom prop-types
+    - run: npm install
+    - run: npm run build
+    - name: Install example
+      run: cd ./example && npm install && cd ..
     - name: Build demo
       run: cd ./example && npm run build && cd ..
-    - name: Upload demo
+    - name: Publish demo artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: ./example/build
 
   deploy:
-    needs: build
+    needs: buildDemo
 
     environment:
       name: github-pages
