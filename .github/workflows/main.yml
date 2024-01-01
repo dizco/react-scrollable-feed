@@ -71,6 +71,7 @@ jobs:
 
   deployGithubPages:
     needs: buildDemo
+    if: github.ref == 'refs/heads/master'
 
     environment:
       name: github-pages
