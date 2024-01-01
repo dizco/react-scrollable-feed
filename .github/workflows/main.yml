@@ -57,10 +57,11 @@ jobs:
     - run: npm run build
     - name: Install example
       run: cd ./example && npm install && cd ..
+
+    # By default, react builds the index.html links with absolute paths. However, the github pages deployment is under a folder name (usually the repo name). Therefore, we must make sure that the index.html links are relative
     - name: Set public url
       run: cd ./example && echo "PUBLIC_URL=." >> $GITHUB_ENV
-    - name: Test
-      run: echo ${{ env.PUBLIC_URL }}
+
     - name: Build demo
       run: cd ./example && npm run build && cd ..
     - name: Publish demo artifact
