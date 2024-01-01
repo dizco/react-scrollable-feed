@@ -3,6 +3,20 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -32,3 +46,41 @@ jobs:
         npm run build &
         cd ./example && npm run start:silent &
         npm run cypress:run -- --record --key ${{ secrets.CYPRESS_KEY }}
+
+  buildDemo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install React
+      run: npm install react react-dom prop-types
+    - run: npm install
+    - run: npm run build
+    - name: Install example
+      run: cd ./example && npm install && cd ..
+
+    # By default, react builds the index.html links with absolute paths. However, the github pages deployment is under a folder name (usually the repo name). Therefore, we must make sure that the index.html links are relative
+    - name: Set public url
+      run: cd ./example && echo "PUBLIC_URL=." >> $GITHUB_ENV
+
+    - name: Build demo
+      run: cd ./example && npm run build && cd ..
+    - name: Publish demo artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./example/build
+
+  deployGithubPages:
+    needs: buildDemo
+    if: github.ref == 'refs/heads/master'
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+
