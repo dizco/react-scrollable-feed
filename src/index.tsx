@@ -9,6 +9,7 @@ export type ScrollableFeedProps = {
     viewableDetectionEpsilon?: number;
     className?: string;
     onScroll?: (isAtBottom: boolean) => void;
+    debug?: boolean
 }
 
 type ScrollableFeedComponentProps = React.PropsWithChildren<ScrollableFeedProps>;
@@ -23,7 +24,7 @@ class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableF
         this.wrapperRef = React.createRef();
         this.handleScroll = this.handleScroll.bind(this);
 
-        console.log("Component cstr");
+        if (this.props.debug) console.log("Component cstr");
     }
 
     static defaultProps: ScrollableFeedProps = {
@@ -43,7 +44,7 @@ class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableF
     };
 
     getSnapshotBeforeUpdate(): boolean {
-      console.log("Component ", this.getSnapshotBeforeUpdate.name);
+        if (this.props.debug) console.log("Component ", this.getSnapshotBeforeUpdate.name);
         if (this.wrapperRef.current && this.bottomRef.current) {
             const { viewableDetectionEpsilon } = this.props;
             return ScrollableFeed.isViewable(this.wrapperRef.current, this.bottomRef.current, viewableDetectionEpsilon!); //This argument is passed down to componentDidUpdate as 3rd parameter
@@ -52,7 +53,7 @@ class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableF
     }
 
     componentDidUpdate(previousProps: ScrollableFeedComponentProps, _previousState: any, snapshot: boolean): void {
-      console.log("Component ", this.componentDidUpdate.name);
+        if (this.props.debug) console.log("Component ", this.componentDidUpdate.name);
         const { forceScroll, changeDetectionFilter } = this.props;
         const isValidChange = changeDetectionFilter!(previousProps, this.props);
         if (isValidChange && (forceScroll || snapshot) && this.bottomRef.current && this.wrapperRef.current) {
@@ -61,7 +62,7 @@ class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableF
     }
 
     componentDidMount(): void {
-      console.log("Component ", this.componentDidMount.name);
+        if (this.props.debug) console.log("Component ", this.componentDidMount.name);
         //Scroll to bottom from the start
         if (this.bottomRef.current && this.wrapperRef.current) {
             this.scrollParentToChild(this.wrapperRef.current, this.bottomRef.current);
@@ -133,7 +134,7 @@ class ScrollableFeed extends React.Component<React.PropsWithChildren<ScrollableF
     }
 
     render(): React.ReactNode {
-      console.log("Component ", this.render.name);
+        if (this.props.debug) console.log("Component ", this.render.name);
 
         const style: CSSProperties = {
             maxHeight: "inherit",

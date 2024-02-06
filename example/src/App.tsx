@@ -90,6 +90,7 @@ export default class App extends Component<Props, State> {
               <div className="card">
                 <div className="card-body scrollable-wrapper pt-0 pb-0 mt-2">
                   <ScrollableFeed
+                      debug
                       ref={this.scrollableRef}
                       onScroll={(isAtBottom: boolean) => this.updateIsAtBottomState(isAtBottom)}
                   >
