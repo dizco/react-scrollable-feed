@@ -1,6 +1,10 @@
 # Change Log
 
 <a name="2.0.0"></a>
+## [2.0.2](https://github.com/dizco/react-scrollable-feed/compare/v2.0.1...v2.0.2) (2024-05-11)
+* Add debug flag
+
+<a name="2.0.0"></a>
 ## [2.0.1](https://github.com/dizco/react-scrollable-feed/compare/v2.0.0...v2.0.1) (2023-12-31)
 * Remove src and other directories from the published package
 
