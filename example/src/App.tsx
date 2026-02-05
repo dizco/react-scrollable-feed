@@ -10,7 +10,7 @@ type State = {
     timestamp: string,
     color: string,
   }[],
-  interval?: NodeJS.Timer,
+  interval?: ReturnType<typeof setInterval>,
 }
 
 export default class App extends Component<Props, State> {
