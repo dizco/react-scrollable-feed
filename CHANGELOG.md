@@ -1,6 +1,16 @@
 # Change Log
 
 <a name="2.0.3"></a>
+## [2.0.4](https://github.com/dizco/react-scrollable-feed/compare/v2.0.3...v2.0.4) (2026-02-05)
+
+
+### Bug Fixes
+
+* **ci:** Autopublish to npm ([#131](https://github.com/dizco/react-scrollable-feed/issues/131)) ([efd03e3](https://github.com/dizco/react-scrollable-feed/commit/efd03e351815c8d8de278c7f273bc570f6c26e44))
+* **deps:** update all major dependencies (major) ([#105](https://github.com/dizco/react-scrollable-feed/issues/105)) ([2fc4bcc](https://github.com/dizco/react-scrollable-feed/commit/2fc4bcc61b7bf7fe24f8e8085edb3be4c0bf02a1))
+* **deps:** update dependency bootstrap to v5.3.7 ([#125](https://github.com/dizco/react-scrollable-feed/issues/125)) ([323945a](https://github.com/dizco/react-scrollable-feed/commit/323945ae9ab1056210d999e1425ef23d4d541c22))
+* Update license in package.json ([ede1583](https://github.com/dizco/react-scrollable-feed/commit/ede15834a1cf1aff6e3e06781395d785baa51139))
+
 ## [2.0.3](https://github.com/dizco/react-scrollable-feed/compare/v2.0.2...v2.0.3) (2025-06-16)
 * Update dependencies
 
