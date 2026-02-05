@@ -38,7 +38,7 @@ jobs:
       run: npm install react react-dom prop-types
     - run: npm install
     - name: Install example
-      run: cd ./example && npm install && cd ..
+      run: cd ./example && npm install --legacy-peer-deps && cd ..
 
     - run: npm run build
     - name: Run Cypress tests
@@ -53,7 +53,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Install React
       run: npm install react react-dom prop-types
-    - run: npm install
+    - run: npm install --legacy-peer-deps
     - run: npm run build
     - name: Install example
       run: cd ./example && npm install && cd ..
