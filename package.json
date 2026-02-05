@@ -22,7 +22,7 @@
     "cypress:run": "cross-env CYPRESS_CRASH_REPORTS=0 cypress run"
   },
   "author": "dizco",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dizco/react-scrollable-feed.git"
