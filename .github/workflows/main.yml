@@ -27,9 +27,9 @@ jobs:
         node-version: [22.x, 24.x]
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
     - run: env | sort
@@ -50,7 +50,7 @@ jobs:
   buildDemo:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Install React
       run: npm install react react-dom prop-types
     - run: npm install
@@ -65,7 +65,7 @@ jobs:
     - name: Build demo
       run: cd ./example && npm run build && cd ..
     - name: Publish demo artifact
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@v5
       with:
         path: ./example/build
 
@@ -81,6 +81,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
 
